@@ -26,6 +26,18 @@ def test_seeded_tracker_follows_nearest_yellow_object() -> None:
     assert not np.array_equal(annotated, frame)
 
 
+def test_seeded_tracker_recovers_after_fast_hit() -> None:
+    tracker = BallTracker()
+    tracker.seed(50, 100, 0.0)
+
+    frame = _frame_with_ball(160, 100)
+    cv2.circle(frame, (270, 100), 6, (0, 255, 255), -1)
+    _, detection = tracker.update(frame, 1 / 60)
+
+    assert detection is not None
+    assert abs(detection.x - 160) <= 1
+
+
 def test_unseeded_tracker_detects_yellow_ball() -> None:
     tracker = BallTracker()
     _, detection = tracker.update(_frame_with_ball(150, 90), 0.0)

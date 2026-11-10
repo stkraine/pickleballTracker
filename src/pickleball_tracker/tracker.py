@@ -23,6 +23,9 @@ class BallDetection:
 class BallTracker:
     """Track small, bright-yellow objects and draw their recent path."""
 
+    MIN_SEARCH_RADIUS = 120.0
+    MAX_SEARCH_SPEED = 6000.0
+
     def __init__(self, history_seconds: float = 2.0) -> None:
         self._history_seconds = history_seconds
         self._trail: deque[tuple[float, BallDetection]] = deque()
@@ -123,7 +126,9 @@ class BallTracker:
         if self._previous is not None:
             previous_time, previous = self._previous
             elapsed = max(timestamp - previous_time, 1 / 120)
-            max_distance = max(45.0, 1800.0 * elapsed)
+            max_distance = max(
+                self.MIN_SEARCH_RADIUS, self.MAX_SEARCH_SPEED * elapsed
+            )
             nearby = [
                 (detection, area)
                 for detection, area in candidates

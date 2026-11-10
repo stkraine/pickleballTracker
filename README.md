@@ -49,6 +49,8 @@ python -m pickleball_tracker
 Choose **Open video** to load a recording. Use **Play** to start playback, or
 choose **Select ball** and click its position in the video to seed tracking.
 The detector is an early color-based prototype and may need a manual seed or
-correction, especially when the ball is small or blurred.
+correction, especially when the ball is small or blurred. Its tracking search
+allows a minimum 120-pixel jump between frames and expands for longer frame
+intervals; use **Select ball** to correct it if the ball is still lost.
 
 Run the tests with `python -m pytest`.
