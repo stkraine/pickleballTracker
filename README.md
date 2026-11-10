@@ -39,7 +39,10 @@ extension.
 ## Run
 
 Python 3.10 or newer is required. The setup command installs the GUI and video
-dependencies.
+dependencies. On Linux with Python 3.10 or 3.11, it excludes the broken
+PySide6 6.12.0 release that can abort with `Fatal Python error: none_dealloc`.
+If PySide6 6.12.0 is already installed in an existing environment, rerun the
+setup command below to install a compatible release.
 
 ```sh
 python -m venv .venv
