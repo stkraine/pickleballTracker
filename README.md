@@ -1,6 +1,8 @@
 # Pickleball Tracker
 
 A desktop app for tracking a pickleball's movement in recorded video.
+<img width="1263" height="810" alt="image" src="https://github.com/user-attachments/assets/204a757c-9b90-4968-9546-32995552a0eb" />
+
 
 ## Plan
 
